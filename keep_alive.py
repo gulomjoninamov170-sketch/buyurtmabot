@@ -7,7 +7,7 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
         self.end_headers()
-        self.wfile.write(b'OK')
+        self.wfile.write(b'Bot is alive!')
 
     def log_message(self, format, *args):
         pass
@@ -18,3 +18,4 @@ def keep_alive():
     server = HTTPServer(('0.0.0.0', port), Handler)
     t = Thread(target=server.serve_forever, daemon=True)
     t.start()
+    print(f'Keep-alive server started on port {port}')
